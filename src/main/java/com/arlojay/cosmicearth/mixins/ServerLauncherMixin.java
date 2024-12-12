@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(ServerLauncher.class)
 public class ServerLauncherMixin {
     @ModifyVariable(method = "main", at = @At("STORE"), ordinal = 1)
-    private static String injected2(String selectedZoneId) {
+    private static String ModifySelectedZoneId(String selectedZoneId) {
         return "cosmicearth:earth";
     }
 }
