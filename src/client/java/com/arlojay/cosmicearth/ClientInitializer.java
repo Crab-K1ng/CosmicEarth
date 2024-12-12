@@ -6,7 +6,6 @@ public class ClientInitializer implements ClientModInitializer {
 
     @Override
     public void onInit() {
-//        Constants.LOGGER.info("Hello From INIT");
         Debug.addDebugItem("biome", Debug.biomeNoiseDebug);
     }
 
