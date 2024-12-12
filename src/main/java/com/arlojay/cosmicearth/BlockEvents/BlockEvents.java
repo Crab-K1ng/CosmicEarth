@@ -1,10 +1,6 @@
 package com.arlojay.cosmicearth.BlockEvents;
 
 import com.arlojay.cosmicearth.CosmicEarthMod;
-import com.arlojay.cosmicearth.block.Blocks;
-import com.github.puzzle.core.Constants;
-import com.github.puzzle.game.block.DataModBlock;
-import com.github.puzzle.game.events.OnRegisterBlockEvent;
 import finalforeach.cosmicreach.util.Identifier;
 
 import java.util.HashSet;

@@ -5,17 +5,17 @@ import com.arlojay.cosmicearth.lib.Range;
 import com.arlojay.cosmicearth.lib.noise.NoiseNode;
 import com.arlojay.cosmicearth.lib.noise.impl.generator.WhiteNoiseGenerator;
 import com.arlojay.cosmicearth.lib.noise.loader.NoiseLoader;
+import com.arlojay.cosmicearth.lib.performance.Performance;
 import com.arlojay.cosmicearth.lib.spline.Interpolator;
 import com.arlojay.cosmicearth.lib.spline.SplinePoint;
-import com.arlojay.cosmicearth.lib.performance.Performance;
+import com.arlojay.cosmicearth.lib.threading.ThreadManager;
 import com.arlojay.cosmicearth.worldgen.biome.BiomeSelector;
 import com.arlojay.cosmicearth.worldgen.biome.impl.*;
 import com.arlojay.cosmicearth.worldgen.mask.ChunkMask;
 import com.arlojay.cosmicearth.worldgen.noise.NoiseCache2D;
 import com.arlojay.cosmicearth.worldgen.noise.NoiseCache3D;
 import com.arlojay.cosmicearth.worldgen.ore.OreType;
-import com.arlojay.cosmicearth.worldgen.structure.*;
-import com.arlojay.cosmicearth.lib.threading.ThreadManager;
+import com.arlojay.cosmicearth.worldgen.structure.Palettes;
 import com.arlojay.cosmicearth.worldgen.threading.JobCreationHelper;
 import finalforeach.cosmicreach.blocks.BlockState;
 import finalforeach.cosmicreach.savelib.blockdata.SingleBlockData;
@@ -26,7 +26,10 @@ import finalforeach.cosmicreach.world.Zone;
 import finalforeach.cosmicreach.worldgen.ChunkColumn;
 import finalforeach.cosmicreach.worldgen.ZoneGenerator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EarthZoneGenerator extends ZoneGenerator {
     public static int maxHeight = 255;

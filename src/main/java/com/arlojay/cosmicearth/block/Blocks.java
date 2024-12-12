@@ -5,7 +5,6 @@ import com.github.puzzle.game.block.DataModBlock;
 import com.github.puzzle.game.events.OnRegisterBlockEvent;
 import finalforeach.cosmicreach.util.Identifier;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
