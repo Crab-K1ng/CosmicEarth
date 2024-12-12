@@ -7,9 +7,6 @@
   "authors": [
     "arlojay"
   ],
-  "meta": {
-    "icon": "example-mod:icons/icon.png"
-  },
   "entrypoints": {
     "client_init": [
       "com.arlojay.cosmicearth.ClientInitializer"
