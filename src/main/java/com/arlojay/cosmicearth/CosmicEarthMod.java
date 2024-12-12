@@ -1,19 +1,27 @@
 package com.arlojay.cosmicearth;
 
+import com.arlojay.cosmicearth.BlockEvents.BlockEvents;
 import com.arlojay.cosmicearth.block.Blocks;
 import com.arlojay.cosmicearth.lib.noise.loader.NoiseLoader;
 import com.arlojay.cosmicearth.worldgen.EarthZoneGenerator;
-import com.github.puzzle.core.PuzzleRegistries;
+import com.github.puzzle.core.Constants;
+import com.github.puzzle.core.loader.provider.mod.entrypoint.impls.ModInitializer;
+import com.github.puzzle.core.loader.provider.mod.entrypoint.impls.PostModInitializer;
+import com.github.puzzle.game.PuzzleRegistries;
 import com.github.puzzle.game.events.OnRegisterBlockEvent;
 import com.github.puzzle.game.events.OnRegisterZoneGenerators;
-import com.github.puzzle.loader.entrypoint.interfaces.ModInitializer;
-import com.github.puzzle.loader.entrypoint.interfaces.PostModInitializer;
 import finalforeach.cosmicreach.blocks.BlockState;
+import finalforeach.cosmicreach.util.Identifier;
+import meteordevelopment.orbit.EventHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Arrays;
+import java.util.Objects;
+
+import static com.github.puzzle.game.resources.PuzzleGameAssetLoader.locateAsset;
+import static finalforeach.cosmicreach.blockevents.BlockEvents.loadBlockEventsFromAsset;
+import static finalforeach.cosmicreach.blocks.MissingBlockStateResult.EXCEPTION;
 
 public class CosmicEarthMod implements ModInitializer, PostModInitializer {
     public static final String MOD_ID = "cosmicearth";
@@ -21,16 +29,17 @@ public class CosmicEarthMod implements ModInitializer, PostModInitializer {
 
     @Override
     public void onInit() {
-        PuzzleRegistries.EVENT_BUS.register(this);
+        PuzzleRegistries.EVENT_BUS.subscribe(this);
         NoiseLoader.registerDefaultNoiseNodes();
     }
 
-    @Subscribe
+    @EventHandler
     public void onEvent(OnRegisterBlockEvent event) {
         Blocks.register(event);
+        BlockEvents.register();
     }
 
-    @Subscribe
+    @EventHandler
     public void onEvent(OnRegisterZoneGenerators event) {
         event.registerGenerator(EarthZoneGenerator::new);
     }
@@ -42,6 +51,6 @@ public class CosmicEarthMod implements ModInitializer, PostModInitializer {
 
     @Override
     public void onPostInit() {
-        addTagToBlock(BlockState.getInstance("base:air[default]"), "foliage_replaceable");
+        addTagToBlock(BlockState.getInstance("base:air[default]", EXCEPTION), "foliage_replaceable");
     }
 }
